@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<!-- 注解版 -->
+<generatorConfiguration>
+    <!-- 1.数据源驱动包路径 -->
+    <classPathEntry location="D:/job_soft/responsitory\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar" />
+
+    <!-- 2.数据库JDBC的连接信息 -->
+    <context id="context11">
+
+        <property name="javaFileExcoding" value="UTF-8"/>
+
+        <!-- 2.1是否去除自动生成的注释；true:是 ；false:否 -->
+        <!--<commentGenerator type="MyCommentGenerator" >
+            <property name="suppressAllComments" value="false"/>
+        </commentGenerator>-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+
+        <!-- 数据库连接 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+						connectionURL="jdbc:mysql://xx.xx.xx.xx:3306/mb?useUnicode=true&amp;characterEncoding=utf-8"
+						userId="root"
+						password="root">
+		</jdbcConnection>
+
+		<javaTypeResolver >
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- 2.3生成的模型的包名和位置 -->
+		<javaModelGenerator targetPackage="com.tools.tq.model.tpp" targetProject="D:/workplace/framework-core/src/main/java" />
+
+		<!-- 2.4生成的映射文件的包名和位置 -->
+		<sqlMapGenerator targetPackage="mapper.tpp" targetProject="D:/workplace/framework-core/src/main/resources">
+			<property name="enableSubPackages" value="true"/>
+		</sqlMapGenerator>
+
+		<!-- mybatis3中的mapper接口 -->
+		<javaClientGenerator targetPackage="com.tools.tq.dao.tpp" type="ANNOTATEDMAPPER" targetProject="D:/workplace/framework-core/src/main/java">
+			<property name="enableSubPackages" value="true"/>
+		</javaClientGenerator>
+
+        <!-- 2.6指定要生成的表 -->
+        <table schema="mybatis" tableName="arc_cr_item" domainObjectName="Item" enableSelectByExample="false" enableDeleteByExample="false"
+               enableUpdateByExample="false" enableCountByExample="false" selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>
